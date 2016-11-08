@@ -308,7 +308,7 @@ pam_sm_close_session(pam_handle_t *pamh, int flags,
 			if ((rc = pam_get_item(pamh, PAM_RHOST, (const void **)&rhost)) == PAM_SUCCESS) {
 
 				if ((rc = pam_get_user(pamh, &user, NULL)) == PAM_SUCCESS) {
-					DBGLOG("Session opened for user: %s", user);
+					DBGLOG("Session closed for user: %s", user);
 					if ((conn = db_connect(options))) {
                           pg_execParam(conn, &res, options->query_session_close, pam_get_service(pamh), user, NULL, rhost);
                           PQclear(res);
